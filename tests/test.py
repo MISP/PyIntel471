@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 import json
+from datetime import datetime
 
 from pyintel471 import PyIntel471
 from .keys import email, authkey
@@ -13,6 +14,7 @@ class TestBasic(unittest.TestCase):
         self.intel = PyIntel471(email, authkey)
 
     def test_search(self):
-        f = self.intel.detailled_filters(malwareFamily='lokibot')
-        r = self.intel.search(f)
+        f = self.intel.search_filters(malwareFamily='lokibot')
+        p = self.intel.url_parameters(createdFrom=datetime(2018, 11, 11), createdUntil=datetime(2018, 11, 12))
+        r = self.intel.search(filters=f, parameters=p)
         print(json.dumps(r.json(), indent=2))
