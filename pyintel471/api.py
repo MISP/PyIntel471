@@ -111,10 +111,9 @@ class PyIntel471:
 
     def search(self, filters: str, parameters: str=None):
         '''Returns selection of results matching filter criteria.'''
-        if parameters is None:
-            full_url = f'https://api.intel471.com/v1/search?{filters}'
-        else:
-            full_url = f'https://api.intel471.com/v1/search?{filters}&{parameters}'
+        full_url = f'https://api.intel471.com/v1/search?{filters}'
+        if parameters is not None:
+            full_url += f'&{parameters}'
         return self._prepare_request('GET', full_url)
 
     def report_filters(self, report: str=None, reportLocation: str=None, reportTag: str=None, reportAdmiraltyCode: str=None):
@@ -130,10 +129,9 @@ class PyIntel471:
 
     def reports(self, filters: str, parameters: str=None):
         '''Returns list of Information Reports matching filter criteria ordered by creation date descending (the most recent are on the top).'''
-        if parameters is None:
-            full_url = f'https://api.intel471.com/v1/reports?{filters}'
-        else:
-            full_url = f'https://api.intel471.com/v1/reports?{filters}&{parameters}'
+        full_url = f'https://api.intel471.com/v1/reports?{filters}'
+        if parameters is not None:
+            full_url += f'&{parameters}'
         return self._prepare_request('GET', full_url)
 
     def reports_detailed(self, uid: str):
@@ -150,10 +148,9 @@ class PyIntel471:
 
     def actors(self, filters: str, parameters: str=None):
         '''Returns list of Actors matching filter criteria.'''
-        if parameters is None:
-            full_url = f'https://api.intel471.com/v1/actors?{filters}'
-        else:
-            full_url = f'https://api.intel471.com/v1/actors?{filters}&{parameters}'
+        full_url = f'https://api.intel471.com/v1/actors?{filters}'
+        if parameters is not None:
+            full_url += f'&{parameters}'
         return self._prepare_request('GET', full_url)
 
     def actors_detailed(self, uid: str):
@@ -170,10 +167,9 @@ class PyIntel471:
 
     def entities(self, filters: str, parameters: str=None):
         '''Returns list of Entities matching filter criteria.'''
-        if parameters is None:
-            full_url = f'https://api.intel471.com/v1/entities?{filters}'
-        else:
-            full_url = f'https://api.intel471.com/v1/entities?{filters}&{parameters}'
+        full_url = f'https://api.intel471.com/v1/entities?{filters}'
+        if parameters is not None:
+            full_url += f'&{parameters}'
         return self._prepare_request('GET', full_url)
 
     def iocs_filters(self, ioc: str=None):
@@ -186,20 +182,18 @@ class PyIntel471:
 
     def iocs(self, filters: str, parameters: str=None):
         '''Returns list of Indicators of compromise matching filter criteria.'''
-        if parameters is None:
-            full_url = f'https://api.intel471.com/v1/iocs?{filters}'
-        else:
-            full_url = f'https://api.intel471.com/v1/iocs?{filters}&{parameters}'
+        full_url = f'https://api.intel471.com/v1/iocs?{filters}'
+        if parameters is not None:
+            full_url += f'&{parameters}'
         return self._prepare_request('GET', full_url)
 
     def tags(self, used=False):
         '''Returns list of tags ordered by alphabet.
         :param used: If True, displays only used tags with use_count > 0
         '''
+        full_url = f'https://api.intel471.com/v1/tags'
         if used:
-            full_url = f'https://api.intel471.com/v1/tags?used'
-        else:
-            full_url = f'https://api.intel471.com/v1/tags'
+            full_url += '?used'
         return self._prepare_request('GET', full_url)
 
     def events_filters(self, event: str=None, eventType: str=None, threatType: str=None, threatUid: str=None, malwareFamily: str=None,
@@ -219,10 +213,9 @@ class PyIntel471:
 
     def events(self, filters: str, parameters: str=None):
         '''Returns list of Events matching filter criteria. Malware Intelligence is a different product from Intel 471 to adversary intelligence.'''
-        if parameters is None:
-            full_url = f'https://api.intel471.com/v1/events?{filters}'
-        else:
-            full_url = f'https://api.intel471.com/v1/events?{filters}&{parameters}'
+        full_url = f'https://api.intel471.com/v1/events?{filters}'
+        if parameters is not None:
+            full_url += f'&{parameters}'
         return self._prepare_request('GET', full_url)
 
     def indicators_filters(self, indicator: str=None, indicatorType: str=None, threatType: str=None, threatUid: str=None, malwareFamily: str=None,
@@ -243,10 +236,9 @@ class PyIntel471:
 
     def indicators(self, filters: str, parameters: str=None):
         '''Returns list of Indicators matching filter criteria. Malware Intelligence is a different product from Intel 471 to adversary intelligence.'''
-        if parameters is None:
-            full_url = f'https://api.intel471.com/v1/indicators?{filters}'
-        else:
-            full_url = f'https://api.intel471.com/v1/indicators?{filters}&{parameters}'
+        full_url = f'https://api.intel471.com/v1/indicators?{filters}'
+        if parameters is not None:
+            full_url += f'&{parameters}'
         return self._prepare_request('GET', full_url)
 
     def yara_filters(self, yara: str=None, yaraType: str=None, threatType: str=None, threatUid: str=None, malwareFamily: str=None,
@@ -267,10 +259,9 @@ class PyIntel471:
 
     def yara(self, filters: str, parameters: str=None):
         '''Returns list of YARA matching filter criteria. Malware Intelligence is a different product from Intel 471 to adversary intelligence.'''
-        if parameters is None:
-            full_url = f'https://api.intel471.com/v1/yara?{filters}'
-        else:
-            full_url = f'https://api.intel471.com/v1/yara?{filters}&{parameters}'
+        full_url = f'https://api.intel471.com/v1/yara?{filters}'
+        if parameters is not None:
+            full_url += f'&{parameters}'
         return self._prepare_request('GET', full_url)
 
     def nids_filters(self, nids: str=None, nidsType: str=None, threatType: str=None, threatUid: str=None, malwareFamily: str=None,
@@ -291,10 +282,9 @@ class PyIntel471:
 
     def nids(self, filters: str, parameters: str=None):
         '''Returns list of NIDS matching filter criteria. Malware Intelligence is a different product from Intel 471 to adversary intelligence.'''
-        if parameters is None:
-            full_url = f'https://api.intel471.com/v1/nids?{filters}'
-        else:
-            full_url = f'https://api.intel471.com/v1/nids?{filters}&{parameters}'
+        full_url = f'https://api.intel471.com/v1/nids?{filters}'
+        if parameters is not None:
+            full_url += f'&{parameters}'
         return self._prepare_request('GET', full_url)
 
     def posts_filters(self, post: str=None, actor: str=None, forum: str=None):
@@ -309,10 +299,9 @@ class PyIntel471:
 
     def posts(self, filters: str, parameters: str=None):
         '''Returns list of Posts matching filter criteria.'''
-        if parameters is None:
-            full_url = f'https://api.intel471.com/v1/posts?{filters}'
-        else:
-            full_url = f'https://api.intel471.com/v1/posts?{filters}&{parameters}'
+        full_url = f'https://api.intel471.com/v1/posts?{filters}'
+        if parameters is not None:
+            full_url += f'&{parameters}'
         return self._prepare_request('GET', full_url)
 
     def malware_reports_filters(self, malwareReport: str=None, threatType: str=None, threatUid: str=None, malwareFamily: str=None,
@@ -330,10 +319,9 @@ class PyIntel471:
 
     def malware_reports(self, filters: str, parameters: str=None):
         '''Returns list of Malware reports matching filter criteria. Malware Intelligence is a different product from Intel 471 to adversary intelligence.'''
-        if parameters is None:
-            full_url = f'https://api.intel471.com/v1/malwareReports?{filters}'
-        else:
-            full_url = f'https://api.intel471.com/v1/malwareReports?{filters}&{parameters}'
+        full_url = f'https://api.intel471.com/v1/malwareReports?{filters}'
+        if parameters is not None:
+            full_url += f'&{parameters}'
         return self._prepare_request('GET', full_url)
 
     def private_messages_filters(self, privateMessage: str=None, actor: str=None, forum: str=None):
@@ -348,8 +336,7 @@ class PyIntel471:
 
     def private_messages(self, filters: str, parameters: str=None):
         '''Returns list of Private messages matching filter criteria.'''
-        if parameters is None:
-            full_url = f'https://api.intel471.com/v1/privateMessages?{filters}'
-        else:
-            full_url = f'https://api.intel471.com/v1/privateMessages?{filters}&{parameters}'
+        full_url = f'https://api.intel471.com/v1/privateMessages?{filters}'
+        if parameters is not None:
+            full_url += f'&{parameters}'
         return self._prepare_request('GET', full_url)
