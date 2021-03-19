@@ -13,7 +13,7 @@ setup(
     description='Python client for Intel471',
     packages=['pyintel471'],
     classifiers=[
-        'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
+        'License :: OSI Approved :: BSD License',
         'Development Status :: 3 - Alpha',
         'Environment :: Console',
         'Operating System :: POSIX :: Linux',
